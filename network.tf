@@ -31,6 +31,8 @@ resource "aws_subnet" "test_subnet" {
   vpc_id = aws_vpc.test_original_vpc.id
   cidr_block = "10.3.3.0/24"
   availability_zone = "ap-northeast-1a"
+  # trueにするとインスタンスにパブリックIPアドレスを自動的に割り当ててくれる
+  map_public_ip_on_launch = true
   tags = {
     Name = format("%s-subnet", var.project_name)
   }

@@ -1,0 +1,3 @@
+[submodule "module/vpc"]
+	path = module/vpc
+	url = https://github.com/taketsuru-devel/terraform-vpc-sample

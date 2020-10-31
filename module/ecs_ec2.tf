@@ -18,7 +18,7 @@ resource "aws_launch_configuration" "instance" {
   instance_type          = "t3.nano"
   iam_instance_profile   = aws_iam_instance_profile.ecs.name 
   user_data              = data.template_file.user_data.rendered
-  security_groups = [aws_security_group.test_security_group.id]
+  security_groups = [module.vpc.security_group_id]
   key_name               = var.ec2_keypair
   
 
@@ -38,7 +38,7 @@ resource "aws_autoscaling_group" "asg" {
   name = format("%s-asg", var.project_name)
 
   launch_configuration = aws_launch_configuration.instance.name
-  vpc_zone_identifier  = [aws_subnet.test_subnet.id]
+  vpc_zone_identifier  = [module.vpc.subnet_id]
   max_size             = 1
   min_size             = 1
   desired_capacity     = 1
@@ -52,7 +52,7 @@ resource "aws_autoscaling_group" "asg" {
 }
 
 data "template_file" "user_data" {
-  template = file("user_data.tpl")
+  template = file(format("%s/user_data.tpl", path.module))
   vars = {
     # ここでcluster.nameを使うと循環参照
     cluster_name = var.cluster_name

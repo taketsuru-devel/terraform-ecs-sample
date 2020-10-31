@@ -15,14 +15,7 @@ v0.13.0
 
 ## inherited from vpc
 - vpcのcidr
-- route tableのcidr
-- subnetのcidr
-- subnetのaz
-
-# output
-- vpcのid
-- subnetのid
-- security groupのid
+- subnetの{cidr,az}のlist
 
 # コマンド
 - terraform init

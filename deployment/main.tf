@@ -19,8 +19,12 @@ module "module_ecs" {
   ec2_keypair = "ec2nano"
 
   vpc_cidr = "10.3.0.0/16"
-  rtb_cidr = "0.0.0.0/0"
-  subnet_cidr = "10.3.3.0/24"
-  subnet_az = "ap-northeast-1a"
+  subnet_setting = [{
+    az_name = "ap-northeast-1a"
+    cidr = "10.3.1.0/24"
+  }, {
+    az_name = "ap-northeast-1c"
+    cidr = "10.3.2.0/24"
+  }]
 }
 

@@ -38,7 +38,7 @@ resource "aws_autoscaling_group" "asg" {
   name = format("%s-asg", var.project_name)
 
   launch_configuration = aws_launch_configuration.instance.name
-  vpc_zone_identifier  = [module.vpc.subnet_id]
+  vpc_zone_identifier  = module.vpc.subnet_ids
   max_size             = 1
   min_size             = 1
   desired_capacity     = 1

@@ -13,9 +13,10 @@ data "aws_ami" "ecs" {
 
 resource "aws_launch_configuration" "instance" {
   name_prefix          = var.project_name
-  image_id             = data.aws_ami.ecs.id
+  #image_id             = data.aws_ami.ecs.id
   #image_id             = "ami-0b229fb8956ace6cd"
-  instance_type          = "t3.nano"
+  image_id               = var.ec2_image_id
+  instance_type          = "t3.medium"
   iam_instance_profile   = aws_iam_instance_profile.ecs.name 
   user_data              = data.template_file.user_data.rendered
   security_groups = [module.vpc.security_group_id]

@@ -53,7 +53,7 @@ resource "aws_iam_role_policy_attachment" "ecs-instance-role-attach-ssm2" {
 
 
 resource "aws_iam_instance_profile" "ecs" {
-    name = "ecs-instance-profile"
+    name = format("%s-ecs-instance-profile", var.project_name)
     path = "/"
     role = aws_iam_role.ecs_instance_role.name
 }

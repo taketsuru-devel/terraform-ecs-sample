@@ -22,3 +22,6 @@ variable "subnet_setting" {
   })) 
 }
 
+variable "ec2_image_id" {
+  description = "ref ssm: /aws/service/ecs/optimized-ami/amazon-linux/recommended/image_id"
+}

@@ -12,6 +12,12 @@ v0.13.0
 - project名
 - cluster名
 - ec2のkeypair
+- ec2のimage_id
+
+# output
+- vpcのid
+- vpcのsubnet_ids
+- vpcのsecurity_group_id
 
 ## inherited from vpc
 - vpcのcidr
